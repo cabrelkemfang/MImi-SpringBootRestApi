@@ -38,5 +38,26 @@ public class ContactController {
     }
 
 
+    @CrossOrigin
+    @RequestMapping(method=RequestMethod.PUT, value="/contacts/{id}")
+    public Contact update(@PathVariable String id, @RequestBody Contact contact) {
+        Optional<Contact> optcontact = contactRepository.findById(id);
+        Contact c = optcontact.get();
+        if(contact.getName() != null)
+            c.setName(contact.getName());
+        if(contact.getAddress() != null)
+            c.setAddress(contact.getAddress());
+        if(contact.getCity() != null)
+            c.setCity(contact.getCity());
+        if(contact.getPhone() != null)
+            c.setPhone(contact.getPhone());
+        if(contact.getEmail() != null)
+            c.setEmail(contact.getEmail());
+        contactRepository.save(c);
+        return c;
+    }
+
+
+
 
 }
