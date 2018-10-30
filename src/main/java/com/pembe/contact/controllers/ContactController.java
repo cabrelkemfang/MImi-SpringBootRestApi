@@ -56,6 +56,18 @@ public class ContactController {
         contactRepository.save(c);
         return c;
     }
+    
+    @CrossOrigin
+    @RequestMapping(method=RequestMethod.DELETE, value="/contacts/{id}")
+    public String delete(@PathVariable String id) {
+        Optional<Contact> optcontact = contactRepository.findById(id);
+        Contact contact = optcontact.get();
+        contactRepository.delete(contact);
+
+        return "";
+    }
+
+
 
 
 
