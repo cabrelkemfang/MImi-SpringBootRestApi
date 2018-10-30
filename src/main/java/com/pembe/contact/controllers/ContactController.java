@@ -31,5 +31,12 @@ public class ContactController {
         return contact;
     }
 
+    @CrossOrigin
+    @RequestMapping(method=RequestMethod.GET, value="/contacts/{id}")
+    public Optional<Contact> show(@PathVariable String id) {
+        return contactRepository.findById(id);
+    }
+
+
 
 }
