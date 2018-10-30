@@ -56,7 +56,7 @@ public class ContactController {
         contactRepository.save(c);
         return c;
     }
-    
+
     @CrossOrigin
     @RequestMapping(method=RequestMethod.DELETE, value="/contacts/{id}")
     public String delete(@PathVariable String id) {
@@ -66,6 +66,12 @@ public class ContactController {
 
         return "";
     }
+
+    @RequestMapping(value="/send/sms/{message}/{number}")
+    public void sendSms(@PathVariable String message, String number){
+        this.service.sendSms(message, number);
+    }
+
 
 
 
