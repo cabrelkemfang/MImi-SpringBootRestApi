@@ -23,4 +23,13 @@ public class ContactController {
         return contactRepository.findAll();
     }
 
+    @CrossOrigin
+    @RequestMapping(method=RequestMethod.POST, value="/contacts")
+    public Contact save(@RequestBody Contact contact) {
+        contactRepository.save(contact);
+
+        return contact;
+    }
+
+
 }
